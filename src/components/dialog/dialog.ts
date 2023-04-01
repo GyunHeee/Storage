@@ -26,8 +26,8 @@ export class InputDialog
       this.closeListener && this.closeListener();
     });
 
-    const submitBton = this.element.querySelector('.dialog__submit');
-    submitBton?.addEventListener('click', () => {
+    const submitBtn = this.element.querySelector('.dialog__submit');
+    submitBtn?.addEventListener('click', () => {
       // 외부로부터 리스터를 등록받아서 있다면 호출한다.
       this.submitListener && this.submitListener();
     });
