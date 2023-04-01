@@ -6,7 +6,7 @@ export class ImageComponent extends BaseComponent<HTMLElement> {
             <div class="image__holder">
                 <img class="image__thumnail" />
             </div>
-            <p class="image__title"></p>
+            <p class="page-item__title image__title"></p>
         </section>`);
 
     // 사용자에게 전달받은 데이터를 innerHTML에 설정하는 것은 좋지 않다.

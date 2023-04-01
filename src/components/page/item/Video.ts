@@ -6,7 +6,7 @@ export class VideoComponent extends BaseComponent<HTMLElement> {
             <div class="video__player">
                 <iframe class="video__iframe"></iframe>
             </div>
-            <h3 class="video__title"></h3>
+            <h3 class="page-item__title video__title"></h3>
         </section>`);
 
     // 사용자에게 전달받은 데이터를 innerHTML에 설정하는 것은 좋지 않다.
