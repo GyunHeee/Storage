@@ -4,9 +4,15 @@ export interface Composable {
   addChild(child: Component): void;
 }
 type OnCloseListener = () => void;
+type DragState = 'start' | 'stop' | 'enter' | 'leave';
+type OnDragStateListener<T extends Component> = (
+  target: T,
+  state: DragState
+) => void;
 
 interface SectionContainer extends Component, Composable {
   setOnCloseListener(listener: OnCloseListener): void;
+  setOnDragStateListener(listener: OnDragStateListener<SectionContainer>): void;
 }
 
 // 생성자 타입
@@ -19,6 +25,7 @@ export class PageItemComponent
   implements SectionContainer
 {
   private closeListener?: OnCloseListener;
+  private dragStateListener?: OnDragStateListener<PageItemComponent>;
 
   constructor() {
     super(`<li draggable="true" class="page-item">
@@ -41,13 +48,31 @@ export class PageItemComponent
     this.element.addEventListener('dragend', (event: DragEvent) => {
       this.onDragEnd(event);
     });
+    this.element.addEventListener('dragenter', (event: DragEvent) => {
+      this.onDragEnter(event);
+    });
+    this.element.addEventListener('dragleave', (event: DragEvent) => {
+      this.onDragLeave(event);
+    });
   }
-  onDragStart(event: DragEvent) {
-    console.log('dragstart', event);
+  onDragStart(_: DragEvent) {
+    this.notifyDragObservers('start');
   }
 
-  onDragEnd(event: DragEvent) {
-    console.log('dragend', event);
+  onDragEnd(_: DragEvent) {
+    this.notifyDragObservers('stop');
+  }
+
+  onDragEnter(_: DragEvent) {
+    this.notifyDragObservers('enter');
+  }
+
+  onDragLeave(_: DragEvent) {
+    this.notifyDragObservers('leave');
+  }
+
+  notifyDragObservers(state: DragState) {
+    this.dragStateListener && this.dragStateListener(this, state);
   }
 
   addChild(child: Component) {
@@ -58,6 +83,10 @@ export class PageItemComponent
   }
   setOnCloseListener(listener: OnCloseListener) {
     this.closeListener = listener;
+  }
+
+  setOnDragStateListener(listener: OnDragStateListener<PageItemComponent>) {
+    this.dragStateListener = listener;
   }
 }
 export class PageComponent
@@ -88,5 +117,10 @@ export class PageComponent
     item.setOnCloseListener(() => {
       item.removeFrom(this.element);
     });
+    item.setOnDragStateListener(
+      (target: SectionContainer, state: DragState) => {
+        console.log(target, state);
+      }
+    );
   }
 }
