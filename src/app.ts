@@ -24,7 +24,7 @@ class App {
   private readonly page: Component & Composable;
   constructor(appRoot: HTMLElement, private dialogRoot: HTMLElement) {
     this.page = new PageComponent(PageItemComponent);
-    this.page.attachTo(appRoot, 'afterend');
+    this.page.attachTo(appRoot, 'afterbegin');
 
     this.bindElementToDialog<MediaSectionInput>(
       '#new-image',
