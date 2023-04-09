@@ -12,6 +12,8 @@ image, video, note, Todo를 기록할 수 있는 프로젝트입니다. 순수 �
 
 ##
 
+![ezgif com-video-to-gif (11)](https://user-images.githubusercontent.com/92011224/230756233-5129cb36-09b7-4c71-b078-4cd1e80882d1.gif)
+
 1. Navbar를 클릭하게 되면 dialog가 나타나게 됩니다.
 2. dialog에서 이미지, 비디오, 노트, 할 일 목록을 추가할 수 있습니다.
 3. 추가된 내용들은 삭제가 가능하며, 드레그를 통해 순서를 바꿀 수 있습니다.
