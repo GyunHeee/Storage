@@ -34,13 +34,3 @@ export class VideoComponent extends BaseComponent<HTMLElement> {
     return url;
   }
 }
-
-// <iframe
-//   width="1354"
-//   height="762"
-//   src="https://www.youtube.com/embed/3-BZxvKT6x4"
-//   title="축신이라 불리는 사나이의 마지막 / 2022 FIFA 카타르월드컵 결승전 아르헨티나 vs 프랑스 [습츠_월드컵 클래식]"
-//   frameborder="0"
-//   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-//   allowfullscreen
-// ></iframe>;
