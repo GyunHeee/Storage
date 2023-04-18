@@ -39,4 +39,3 @@ TypeScript
 
 - React 라이브러리에서 Typescript 적용하기
 
-## Deploy
